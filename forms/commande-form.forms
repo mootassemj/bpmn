@@ -1,241 +1,132 @@
 {
   "components": [
     {
-      "label": "Saisie de commande",
-      "type": "panel",
-      "id": "panel_header",
-      "components": [
-        {
-          "label": "📦 Saisie de commande",
-          "type": "label",
-          "id": "header_title"
-        },
-        {
-          "label": "Remplissez les informations ci-dessous pour passer votre commande",
-          "type": "label",
-          "id": "header_desc",
-          "className": "form-subtitle"
-        }
-      ]
+      "type": "textfield",
+      "id": "nomClient",
+      "key": "nomClient",
+      "label": "Nom complet",
+      "placeholder": "ex: Ahmed Ben Ali",
+      "validate": {
+        "required": true,
+        "minLength": 2
+      }
     },
     {
-      "label": "Informations client",
-      "type": "panel",
-      "id": "panel_client",
-      "components": [
-        {
-          "label": "Nom complet",
-          "type": "textfield",
-          "id": "nomClient",
-          "key": "nomClient",
-          "placeholder": "ex: Ahmed Ben Ali",
-          "validate": {
-            "required": true
-          }
-        },
-        {
-          "label": "Email",
-          "type": "textfield",
-          "id": "emailClient",
-          "key": "emailClient",
-          "inputType": "email",
-          "placeholder": "ex: ahmed@email.com",
-          "validate": {
-            "required": true
-          }
-        },
-        {
-          "label": "Téléphone",
-          "type": "textfield",
-          "id": "telephoneClient",
-          "key": "telephoneClient",
-          "placeholder": "+216 XX XXX XXX"
-        },
-        {
-          "label": "Statut client",
-          "type": "select",
-          "id": "statutClient",
-          "key": "statutClient",
-          "data": {
-            "values": [
-              {
-                "label": "-- Choisir --",
-                "value": ""
-              },
-              {
-                "label": "Nouveau client",
-                "value": "NOUVEAU"
-              },
-              {
-                "label": "Client régulier",
-                "value": "REGULIER"
-              },
-              {
-                "label": "Client VIP",
-                "value": "VIP"
-              },
-              {
-                "label": "Entreprise",
-                "value": "ENTREPRISE"
-              }
-            ]
+      "type": "textfield",
+      "id": "emailClient",
+      "key": "emailClient",
+      "label": "Email",
+      "placeholder": "ex: ahmed@email.com",
+      "inputType": "email",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "type": "textfield",
+      "id": "telephoneClient",
+      "key": "telephoneClient",
+      "label": "Téléphone",
+      "placeholder": "+216 XX XXX XXX"
+    },
+    {
+      "type": "select",
+      "id": "statutClient",
+      "key": "statutClient",
+      "label": "Statut client",
+      "validate": {
+        "required": true
+      },
+      "data": {
+        "values": [
+          {
+            "label": "Nouveau client",
+            "value": "NOUVEAU"
           },
-          "validate": {
-            "required": true
+          {
+            "label": "Client régulier",
+            "value": "REGULIER"
+          },
+          {
+            "label": "Client VIP",
+            "value": "VIP"
+          },
+          {
+            "label": "Entreprise",
+            "value": "ENTREPRISE"
           }
-        }
-      ]
+        ]
+      }
     },
     {
+      "type": "textfield",
+      "id": "adresseLivraison",
+      "key": "adresseLivraison",
       "label": "Adresse de livraison",
-      "type": "panel",
-      "id": "panel_livraison",
-      "components": [
-        {
-          "label": "Adresse",
-          "type": "textfield",
-          "id": "adresseLivraison",
-          "key": "adresseLivraison",
-          "placeholder": "Numéro, rue, avenue...",
-          "validate": {
-            "required": true
-          }
-        },
-        {
-          "label": "Ville",
-          "type": "textfield",
-          "id": "ville",
-          "key": "ville",
-          "placeholder": "Tunis, Sfax...",
-          "validate": {
-            "required": true
-          }
-        },
-        {
-          "label": "Code postal",
-          "type": "textfield",
-          "id": "codePostal",
-          "key": "codePostal",
-          "placeholder": "1000"
-        }
-      ]
+      "placeholder": "Numéro, rue, avenue...",
+      "validate": {
+        "required": true
+      }
     },
     {
-      "label": "Produits commandés",
-      "type": "panel",
-      "id": "panel_produits",
-      "components": [
-        {
-          "label": "Articles",
-          "type": "datagrid",
-          "id": "items",
-          "key": "items",
-          "components": [
-            {
-              "label": "Référence produit",
-              "type": "textfield",
-              "id": "ref",
-              "key": "ref",
-              "placeholder": "REF-001"
-            },
-            {
-              "label": "Désignation",
-              "type": "textfield",
-              "id": "designation",
-              "key": "designation",
-              "placeholder": "Nom du produit"
-            },
-            {
-              "label": "Quantité",
-              "type": "number",
-              "id": "quantity",
-              "key": "quantity",
-              "defaultValue": 1,
-              "validate": {
-                "min": 1
-              }
-            },
-            {
-              "label": "Prix unitaire (DT)",
-              "type": "number",
-              "id": "prix",
-              "key": "prix",
-              "defaultValue": 0,
-              "validate": {
-                "min": 0
-              }
-            }
-          ]
-        }
-      ]
+      "type": "textfield",
+      "id": "ville",
+      "key": "ville",
+      "label": "Ville",
+      "placeholder": "Tunis, Sfax...",
+      "validate": {
+        "required": true
+      }
     },
     {
-      "label": "Montant total",
-      "type": "panel",
-      "id": "panel_total",
-      "components": [
-        {
-          "label": "Montant total TTC",
-          "type": "number",
-          "id": "totalAmount",
-          "key": "montantCommande",
-          "disabled": true,
-          "defaultValue": 0
-        }
-      ]
+      "type": "textfield",
+      "id": "codePostal",
+      "key": "codePostal",
+      "label": "Code postal",
+      "placeholder": "1000"
     },
     {
-      "label": "Disponibilité et commandes",
-      "type": "panel",
-      "id": "panel_stock",
-      "components": [
-        {
-          "label": "Disponibilité stock",
-          "type": "radio",
-          "id": "stockDisponible",
-          "key": "stockDisponible",
-          "data": {
-            "values": [
-              {
-                "label": "✔ Disponible",
-                "value": "true"
-              },
-              {
-                "label": "✖ Rupture",
-                "value": "false"
-              }
-            ]
+      "type": "number",
+      "id": "nbCommandesPrecedentes",
+      "key": "nbCommandesPrecedentes",
+      "label": "Nombre de commandes passées",
+      "defaultValue": 0,
+      "validate": {
+        "min": 0
+      }
+    },
+    {
+      "type": "radio",
+      "id": "stockDisponible",
+      "key": "stockDisponible",
+      "label": "Disponibilité stock",
+      "defaultValue": "true",
+      "data": {
+        "values": [
+          {
+            "label": "✔ Disponible",
+            "value": "true"
           },
-          "defaultValue": "true"
-        },
-        {
-          "label": "Nombre de commandes passées précédemment",
-          "type": "number",
-          "id": "nbCommandesPrecedentes",
-          "key": "nbCommandesPrecedentes",
-          "defaultValue": 0,
-          "validate": {
-            "min": 0
+          {
+            "label": "✖ Rupture",
+            "value": "false"
           }
-        }
-      ]
+        ]
+      }
     },
     {
-      "label": "Notes et instructions",
-      "type": "panel",
-      "id": "panel_notes",
-      "components": [
-        {
-          "label": "Notes / instructions",
-          "type": "textarea",
-          "id": "notesCommande",
-          "key": "notesCommande",
-          "placeholder": "Instructions de livraison, demandes spéciales...",
-          "rows": 3
-        }
-      ]
+      "type": "textarea",
+      "id": "notesCommande",
+      "key": "notesCommande",
+      "label": "Notes / instructions",
+      "placeholder": "Instructions de livraison, demandes spéciales...",
+      "rows": 3
     }
   ],
   "display": "form",
-  "type": "form"
+  "schemaVersion": 10,
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.46.1"
+  }
 }
