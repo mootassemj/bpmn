@@ -1,0 +1,219 @@
+{
+  "components": [
+    {
+      "label": "Confirmation de livraison",
+      "type": "panel",
+      "id": "panel_header",
+      "components": [
+        {
+          "label": "🚚 Confirmation de livraison",
+          "type": "label",
+          "id": "header_title"
+        },
+        {
+          "label": "Renseignez le statut de la livraison pour cette commande",
+          "type": "label",
+          "id": "header_desc",
+          "className": "form-subtitle"
+        }
+      ]
+    },
+    {
+      "label": "Récapitulatif commande",
+      "type": "panel",
+      "id": "panel_recap",
+      "components": [
+        {
+          "label": "Client",
+          "type": "label",
+          "id": "display_client",
+          "defaultValue": "—"
+        },
+        {
+          "label": "Adresse",
+          "type": "label",
+          "id": "display_adresse",
+          "defaultValue": "—"
+        },
+        {
+          "label": "Montant",
+          "type": "label",
+          "id": "display_montant",
+          "defaultValue": "—"
+        },
+        {
+          "label": "Remise appliquée",
+          "type": "label",
+          "id": "display_remise",
+          "defaultValue": "—"
+        }
+      ]
+    },
+    {
+      "label": "Informations transporteur",
+      "type": "panel",
+      "id": "panel_transporteur",
+      "components": [
+        {
+          "label": "Nom du transporteur",
+          "type": "select",
+          "id": "transporteur",
+          "key": "transporteur",
+          "data": {
+            "values": [
+              {
+                "label": "-- Sélectionner --",
+                "value": ""
+              },
+              {
+                "label": "Rapid Express",
+                "value": "Rapid Express"
+              },
+              {
+                "label": "Tunisia Post",
+                "value": "Tunisia Post"
+              },
+              {
+                "label": "DHL",
+                "value": "DHL"
+              },
+              {
+                "label": "FedEx",
+                "value": "FedEx"
+              },
+              {
+                "label": "Livraison interne",
+                "value": "Interne"
+              }
+            ]
+          },
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Numéro bon de livraison",
+          "type": "textfield",
+          "id": "numeroBL",
+          "key": "numeroBL",
+          "placeholder": "BL-2025-XXXXX",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Date de livraison",
+          "type": "textfield",
+          "id": "dateLivraison",
+          "key": "dateLivraison",
+          "inputType": "date",
+          "validate": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "label": "Résultat de la livraison",
+      "type": "panel",
+      "id": "panel_resultat",
+      "components": [
+        {
+          "label": "Statut de livraison",
+          "type": "radio",
+          "id": "livraisonReussie",
+          "key": "livraisonReussie",
+          "data": {
+            "values": [
+              {
+                "label": "✔ Livraison réussie",
+                "value": "true"
+              },
+              {
+                "label": "✖ Livraison échouée",
+                "value": "false"
+              }
+            ]
+          },
+          "defaultValue": "true",
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "label": "Motif de l'échec",
+          "type": "select",
+          "id": "motifEchec",
+          "key": "motifEchec",
+          "data": {
+            "values": [
+              {
+                "label": "-- Choisir un motif --",
+                "value": ""
+              },
+              {
+                "label": "Destinataire absent",
+                "value": "ABSENT"
+              },
+              {
+                "label": "Adresse incorrecte",
+                "value": "ADRESSE_INCORRECTE"
+              },
+              {
+                "label": "Colis endommagé",
+                "value": "COLIS_ENDOMMAGE"
+              },
+              {
+                "label": "Refus du client",
+                "value": "REFUS_CLIENT"
+              },
+              {
+                "label": "Problème de transport",
+                "value": "PROBLEME_TRANSPORT"
+              }
+            ]
+          },
+          "conditional": {
+            "show": "${livraisonReussie === 'false'}",
+            "when": null
+          }
+        },
+        {
+          "label": "Nouvelle date proposée",
+          "type": "textfield",
+          "id": "nouvelleDateProposee",
+          "key": "nouvelleDateProposee",
+          "inputType": "date",
+          "conditional": {
+            "show": "${livraisonReussie === 'false'}",
+            "when": null
+          }
+        }
+      ]
+    },
+    {
+      "label": "Informations supplémentaires",
+      "type": "panel",
+      "id": "panel_infos",
+      "components": [
+        {
+          "label": "Commentaire",
+          "type": "textarea",
+          "id": "commentaireLivraison",
+          "key": "commentaireLivraison",
+          "placeholder": "Observations particulières...",
+          "rows": 2
+        },
+        {
+          "label": "Nom du réceptionnaire ayant signé",
+          "type": "textfield",
+          "id": "nomReceptionnaire",
+          "key": "nomReceptionnaire",
+          "placeholder": "Prénom Nom"
+        }
+      ]
+    }
+  ],
+  "display": "form",
+  "type": "form"
+}
